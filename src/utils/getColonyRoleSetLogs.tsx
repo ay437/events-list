@@ -1,9 +1,7 @@
-import connectColonyClient from './connectColonyClient';
+import { ColonyClient } from '@colony/colony-js';
 import { getLogs, getBlockTime } from '@colony/colony-js';
 
-const getColonyRoleSetLogs = async () => {
-  const colonyClient = await connectColonyClient();
-
+const getColonyRoleSetLogs = async (colonyClient: ColonyClient) => {
   const eventFilter = colonyClient.filters.ColonyRoleSet();
 
   const eventLogs = await getLogs(colonyClient, eventFilter);

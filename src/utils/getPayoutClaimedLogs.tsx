@@ -1,11 +1,9 @@
-import connectColonyClient from './connectColonyClient';
+import { ColonyClient } from '@colony/colony-js';
 import { getLogs, getBlockTime } from '@colony/colony-js';
 import { utils } from 'ethers';
 import { BigNumber } from 'ethers/utils';
 
-const getPayoutClaimedLogs = async () => {
-  const colonyClient = await connectColonyClient(); // pass as prop to do only once
-
+const getPayoutClaimedLogs = async (colonyClient: ColonyClient) => {
   const eventFilter = colonyClient.filters.PayoutClaimed(null, null, null);
 
   const eventLogs = await getLogs(colonyClient, eventFilter);

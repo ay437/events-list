@@ -1,9 +1,7 @@
-import connectColonyClient from './connectColonyClient';
+import { ColonyClient } from '@colony/colony-js';
 import { getLogs, getBlockTime } from '@colony/colony-js';
 
-const getColonyInitialisedLogs = async () => {
-  const colonyClient = await connectColonyClient();
-
+const getColonyInitialisedLogs = async (colonyClient: ColonyClient) => {
   const eventFilter = colonyClient.filters.ColonyInitialised(null, null);
 
   const eventLogs = await getLogs(colonyClient, eventFilter);
