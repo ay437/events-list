@@ -1,16 +1,8 @@
-# Colony Coding Challenge Boostrap
+# Colony Events List
 
-This repo was bootstrapped with [Create React App @ v5](https://github.com/facebook/create-react-app) but it purposely uses an older version of `react-scripts` which will install `webpack` version `4`.
+![Loading Colony Events example](./src/images/colony-loading-list-example.png)
 
-This is because the latest version of [CRA](https://github.com/facebook/create-react-app) comes with `webpack` version `5` which dropped support for default node polyfills, meaning you have to manually overwrite CRA's webpack config and polyfill libs like: `crypto`, `http`, `https`, `url`, etc...
-
-There are obviously more ways of going about it, but for the purpouses of [this coding challenge](https://github.com/JoinColony/coding-challenge-events-list) this approach was the quickest.
-
-So just clone this repo and get started!
-
----
-
-_Readme below is part of CRA:_
+![Colony Events List](./src/images/colony-events-list-example.png)
 
 ## Available Scripts
 
