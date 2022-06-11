@@ -36,6 +36,7 @@ const App = () => {
       setItemsDisplayedCount(itemsDisplayedCount + SCROLL_DIVISIONS);
     }, 750);
   };
+
   return items === undefined ? (
     <div className={styles.loadingMessage}>
       <img
