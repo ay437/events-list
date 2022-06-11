@@ -20,7 +20,7 @@ const App = () => {
       setColonyEventLogs(allLogs);
       setItems(allLogs.slice(0, SCROLL_DIVISIONS));
     };
-    logs().catch(console.error);
+    logs().catch(Error);
   }, []);
 
   const fetchMoreData = () => {
