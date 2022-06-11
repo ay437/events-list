@@ -1,38 +1,39 @@
+import { ColonyClient } from '@colony/colony-js';
 import connectColonyClient from './connectColonyClient';
 import getColonyInitialisedLogs from './getColonyInitialisedLogs';
 import getColonyRoleSetLogs from './getColonyRoleSetLogs';
 import getDomainAddedLogs from './getDomainAddedLogs';
 import getPayoutClaimedLogs from './getPayoutClaimedLogs';
-import { LogDescription } from 'ethers/utils';
-
-export interface ColonyEventLog extends LogDescription {
-  sort: any;
-  readonly logTime: number;
-  readonly address?: string;
-  readonly userAddress?: string;
-  readonly payoutClaimed?: string;
-  readonly humanReadableFundingPotId?: string;
-}
+import { ColonyEventLog } from './types';
 
 const getAllLogs = async () => {
-  const colonyClient = await connectColonyClient();
+  const colonyClient: ColonyClient = await connectColonyClient();
 
-  const colonyInitialisedLogs = await getColonyInitialisedLogs(colonyClient);
+  const colonyRoleSetLogs: Array<ColonyEventLog> = await getColonyRoleSetLogs(
+    colonyClient
+  );
 
-  const colonyRoleSetLogs = await getColonyRoleSetLogs(colonyClient);
+  const payoutClaimedLogs: Array<ColonyEventLog> = await getPayoutClaimedLogs(
+    colonyClient
+  );
 
-  const domainAddedLogs = await getDomainAddedLogs(colonyClient);
+  const domainAddedLogs: Array<ColonyEventLog> = await getDomainAddedLogs(
+    colonyClient
+  );
 
-  const payoutClaimedLogs = await getPayoutClaimedLogs(colonyClient);
+  const colonyInitialisedLogs: Array<ColonyEventLog> =
+    await getColonyInitialisedLogs(colonyClient);
 
-  const allEventLogs: ColonyEventLog = [
-    ...colonyInitialisedLogs,
+  const allEventLogs: Array<ColonyEventLog> = [
     ...colonyRoleSetLogs,
+    ...payoutClaimedLogs,
     ...domainAddedLogs,
-    ...payoutClaimedLogs
+    ...colonyInitialisedLogs
   ];
-  const sortedEvents = allEventLogs.sort((a, b) => b.logTime - a.logTime);
-  return sortedEvents;
+  const sortedLogs = allEventLogs.sort(
+    (a: ColonyEventLog, b: ColonyEventLog) => b.logTime! - a.logTime!
+  );
+  return sortedLogs;
 };
 
 export default getAllLogs;

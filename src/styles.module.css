@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
+body {
+    margin: 0; 
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(300deg, #f4f0f3 0%, #eaf3f7 100%);
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+}
+
+span {
+    font-weight: 700;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 36px;
+}
+
+.loadingMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 36px;
+}
+
+.loadMoreResults {
+    text-align: center;
+}
+
+.eventsList {
+    width: 100%;
+    height: auto;
+    box-shadow: rgba(62, 118, 244, 0.14) 0px 8px 24px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .eventsList {
+        width: 700px;
+    }
+}
+
+.eventsListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    padding: 26px 20px;
+    background-color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+    .eventsListItem {
+        height: 38px;
+        justify-content: space-between;
+    }
+}
+
+.eventsListItem:hover {
+    background-color: #eaeff7;
+    transition: background-color 300ms linear;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .eventsListItem:hover {
+        height: 38px;
+    }
+}
+
+.eventsListItem:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.eventsListItem:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.avatar {
+    width: 37px;
+    height: 37px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    .avatar {
+        margin-bottom: 18px;
+    }
+}
+
+.userData {
+    height: 68px;
+}
+
+.eventMessage {
+    width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .eventMessage {
+        width: 602px;
+    }
+}
+
+.eventsListItem:hover .eventMessage {
+    text-overflow: visible;
+    white-space: normal;
+    text-overflow: initial;
+}
+
+.eventDate {
+    font-size: 12px;
+    margin: 0;
+}
