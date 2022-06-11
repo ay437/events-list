@@ -6,13 +6,13 @@ import { ColonyEventLog } from '../utils/types';
 
 const EventListItem = ({
   eventLog,
-  key
+  id
 }: {
   eventLog: ColonyEventLog;
-  key: number;
+  id: string;
 }) => {
   return (
-    <li className={styles.eventsListItem} key={key}>
+    <li className={styles.eventsListItem} key={id}>
       <div className={styles.avatar}>
         <Blockies
           seed={

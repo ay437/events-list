@@ -5,6 +5,7 @@ import EventListItem from './components/EventListItem';
 import styles from './styles.module.css';
 import { ColonyEventLog } from './utils/types';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import uniqid from 'uniqid';
 
 const App = () => {
   const [colonyEventLogs, setColonyEventLogs] = useState<ColonyEventLog[]>();
@@ -45,7 +46,7 @@ const App = () => {
     </div>
   ) : (
     <div className={styles.page}>
-      <ul className={styles.eventsList}>
+      <ul className={styles.eventsList} key={uniqid()}>
         <InfiniteScroll
           dataLength={items!.length}
           next={fetchMoreData}
@@ -57,10 +58,11 @@ const App = () => {
               ''
             )
           }
+          key={uniqid()}
         >
-          {items?.map((event, key) => (
-            <EventListItem eventLog={event} key={key} />
-          ))}
+          {items?.map((event) => {
+            return <EventListItem eventLog={event} id={uniqid()} />;
+          })}
         </InfiniteScroll>
       </ul>
     </div>
